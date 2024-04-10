@@ -1,12 +1,12 @@
-import ItemSaibaMais from '../ItemSaibaMais'
 import { Container } from './style'
-import { Prato } from '../../models/Prato'
+import { Loja } from '../../models/Loja'
+import LojaItem from '../Loja'
 
-const Menu = ({ pratos }: { pratos: Prato[] }) => (
+const ListaLoja = ({ lojas }: { lojas: Loja[] }) => (
   <Container>
     <div className="container">
-      {pratos.map((each) => (
-        <ItemSaibaMais
+      {lojas.map((each) => (
+        <LojaItem
           descricao={each.descricao}
           imagem={each.imagem}
           link={each.link}
@@ -20,4 +20,4 @@ const Menu = ({ pratos }: { pratos: Prato[] }) => (
   </Container>
 )
 
-export default Menu
+export default ListaLoja

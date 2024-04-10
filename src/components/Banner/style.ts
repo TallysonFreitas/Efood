@@ -11,6 +11,7 @@ export const Imagem = styled.div<Props>`
   background-image: url(${(props) => props.imagem});
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   position: relative;
 
   .container {

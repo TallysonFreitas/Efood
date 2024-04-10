@@ -1,6 +1,7 @@
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import BannerImg from '../../assets/images/dolce.png'
+import ListaPratos from '../../components/ListaPratos'
 
 const Perfil = () => (
   <>
@@ -10,6 +11,7 @@ const Perfil = () => (
       tag="Italiana"
       titulo="La Dolce Vita Trattoria"
     />
+    <ListaPratos />
   </>
 )
 

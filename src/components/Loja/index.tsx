@@ -19,7 +19,7 @@ export type Props = {
   imagem: string
 }
 
-const ItemSaibaMais = ({ nome, descricao, link, tags, imagem }: Props) => (
+const Loja = ({ nome, descricao, link, tags, imagem }: Props) => (
   <Card>
     <Imagem src={imagem} alt="Sushi" />
     <Textos>
@@ -42,4 +42,4 @@ const ItemSaibaMais = ({ nome, descricao, link, tags, imagem }: Props) => (
   </Card>
 )
 
-export default ItemSaibaMais
+export default Loja
