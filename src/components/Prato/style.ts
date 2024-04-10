@@ -28,7 +28,7 @@ export const Descricao = styled.p`
   color: ${cores.marromClaro};
 `
 
-export const ButtonLink = styled.a`
+export const Button = styled.button`
   width: 100%;
   height: 24px;
   background-color: ${cores.marromClaro};
@@ -41,4 +41,6 @@ export const ButtonLink = styled.a`
   line-height: 16.41px;
   text-align: center;
   display: block;
+  border: none;
+  cursor: pointer;
 `

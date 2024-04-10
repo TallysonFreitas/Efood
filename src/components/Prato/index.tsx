@@ -1,16 +1,30 @@
-import { ButtonLink, Card, Descricao, Imagem, Titulo } from './style'
-import Marguerita from '../../assets/images/pizza-marguerita.png'
+import { useState } from 'react'
+import Modal from '../Modal'
+import { Button, Card, Descricao, Imagem, Titulo } from './style'
 
-const Prato = () => (
-  <Card>
-    <Imagem src={Marguerita} />
-    <Titulo>Pizza Marguerita</Titulo>
-    <Descricao>
-      A clássica Marguerita: molho de tomate suculento, mussarela derretida,
-      manjericão fresco e um toque de azeite. Sabor e simplicidade!
-    </Descricao>
-    <ButtonLink href="#">Adicionar ao carrinho</ButtonLink>
-  </Card>
-)
+type Props = {
+  titulo: string
+  imagem: string
+  descricao: string
+}
+
+const Prato = ({ titulo, imagem, descricao }: Props) => {
+  function ativaModal() {
+    setVisivel(!visivel)
+  }
+
+  const [visivel, setVisivel] = useState(false)
+  return (
+    <>
+      <Card>
+        <Imagem src={imagem} />
+        <Titulo>{titulo}</Titulo>
+        <Descricao>{descricao}</Descricao>
+        <Button onClick={ativaModal}>Mais detalhes</Button>
+      </Card>
+      <Modal visivel={visivel} fechar={ativaModal} />
+    </>
+  )
+}
 
 export default Prato
