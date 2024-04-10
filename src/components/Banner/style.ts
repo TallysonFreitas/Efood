@@ -18,7 +18,7 @@ export const Imagem = styled.div<Props>`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    z-index: 21;
+    z-index: 1;
     position: relative;
     height: 100%;
     padding: 32px;
