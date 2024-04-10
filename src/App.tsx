@@ -1,10 +1,11 @@
-import { GlobalStyle } from './styles'
+import { BrowserRouter } from 'react-router-dom'
+import Rotas from './routes'
 
 function App() {
   return (
-    <>
-      <GlobalStyle />
-    </>
+    <BrowserRouter>
+      <Rotas />
+    </BrowserRouter>
   )
 }
 
