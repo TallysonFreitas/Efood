@@ -1,4 +1,4 @@
-import { ContainerHeader, Texto, Titulo } from './style'
+import { ContainerHeader, Texto, TextoLink, Titulo } from './style'
 import LogoImg from '../../assets/images/logo.png'
 import Background from '../../assets/images/background-header.png'
 import { Logo } from '../../styles'
@@ -13,7 +13,7 @@ const Header = ({ type, titulo }: Props) => (
     <div className="container">
       {type == 'nav' ? (
         <>
-          <Texto>Restaurantes</Texto>
+          <TextoLink to={'/'}>Restaurantes</TextoLink>
           <Logo src={LogoImg} alt="Efood" />
           <Texto>0 produto(s) no carrinho</Texto>
         </>

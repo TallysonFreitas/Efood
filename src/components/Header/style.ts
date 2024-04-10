@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import { Link } from 'react-router-dom'
 
 type Props = {
   image: string
@@ -26,6 +27,14 @@ export const Texto = styled.p`
   font-weight: 900;
   line-height: 20px;
   color: ${cores.laranja};
+`
+
+export const TextoLink = styled(Link)`
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 20px;
+  color: ${cores.laranja};
+  text-decoration: none;
 `
 
 export const Titulo = styled.h2`
