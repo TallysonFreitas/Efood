@@ -1,15 +1,21 @@
+import { PratoType } from '../../models/Prato'
 import Prato from '../Prato'
 import { Container } from './style'
 
-const ListaPratos = () => (
+type Props = {
+  pratos: PratoType[]
+}
+const ListaPratos = ({ pratos }: Props) => (
   <Container>
     <div className="container">
-      <Prato />
-      <Prato />
-      <Prato />
-      <Prato />
-      <Prato />
-      <Prato />
+      {pratos.map((each) => (
+        <Prato
+          descricao={each.descricao}
+          imagem={each.imagem}
+          titulo={each.titulo}
+          key={each.titulo}
+        />
+      ))}
     </div>
   </Container>
 )
