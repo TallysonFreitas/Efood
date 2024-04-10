@@ -1,6 +1,7 @@
-import { ContainerHeader, Logo, Texto, Titulo } from './style'
+import { ContainerHeader, Texto, Titulo } from './style'
 import LogoImg from '../../assets/images/logo.png'
 import Background from '../../assets/images/background-header.png'
+import { Logo } from '../../styles'
 
 type Props = {
   type: 'home' | 'nav'

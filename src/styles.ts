@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   bege: '#fff8f2',
@@ -25,4 +25,9 @@ body{
   width:100%;
   margin: 0 auto;
 }
+`
+
+export const Logo = styled.img`
+  width: 126px;
+  height: 56px;
 `

@@ -21,11 +21,6 @@ export const ContainerHeader = styled.header<Props>`
   }
 `
 
-export const Logo = styled.img`
-  width: 126px;
-  height: 56px;
-`
-
 export const Texto = styled.p`
   font-size: 18px;
   font-weight: 900;
