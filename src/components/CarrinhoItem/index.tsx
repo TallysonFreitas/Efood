@@ -19,7 +19,12 @@ const CarrinhoItem = ({ imagem, titulo, preco, descricao, id }: Props) => {
       <Imagem imagem={imagem} title={descricao} />
       <div>
         <Titulo>{titulo}</Titulo>
-        <Preco>{preco}</Preco>
+        <Preco>
+          {preco.toLocaleString('pt-br', {
+            style: 'currency',
+            currency: 'BRL'
+          })}
+        </Preco>
       </div>
       <Delete
         onClick={() => {
