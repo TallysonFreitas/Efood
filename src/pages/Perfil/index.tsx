@@ -81,7 +81,12 @@ const Perfil = () => {
         titulo="La Dolce Vita Trattoria"
       />
       <ListaPratos pratos={Pratos} />
-      <Carrinho visivel={carrinhoVisivel} />
+      <Carrinho
+        visivel={carrinhoVisivel}
+        fechar={() => {
+          setCarrinhoVisivel(!carrinhoVisivel)
+        }}
+      />
     </>
   )
 }
