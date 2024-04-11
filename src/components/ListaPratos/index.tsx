@@ -13,7 +13,9 @@ const ListaPratos = ({ pratos }: Props) => (
           descricao={each.descricao}
           imagem={each.imagem}
           titulo={each.titulo}
-          key={each.titulo}
+          key={each.id}
+          valor={each.valor}
+          id={each.id}
         />
       ))}
     </div>
