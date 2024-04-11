@@ -27,6 +27,7 @@ export const Texto = styled.p`
   font-weight: 900;
   line-height: 20px;
   color: ${cores.laranja};
+  cursor: pointer;
 `
 
 export const TextoLink = styled(Link)`
