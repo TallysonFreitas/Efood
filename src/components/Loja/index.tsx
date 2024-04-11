@@ -9,6 +9,7 @@ import {
   Textos
 } from './style'
 import Star from '../../assets/images/star.png'
+import { Link } from 'react-router-dom'
 
 export type Props = {
   nome: string
@@ -25,9 +26,9 @@ const Loja = ({ nome, descricao, link, tags, imagem }: Props) => (
     <Textos>
       <Nome>{nome}</Nome>
       <Descricao>{descricao}</Descricao>
-      <a href={link}>
+      <Link to={link}>
         <Tag size="large">Saiba mais</Tag>
-      </a>
+      </Link>
       <Nota>
         4.9 <img src={Star} alt="star" />
       </Nota>

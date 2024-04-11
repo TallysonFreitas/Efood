@@ -6,9 +6,11 @@ type Props = {
   titulo: string
   imagem: string
   descricao: string
+  valor: number
+  id: number
 }
 
-const Prato = ({ titulo, imagem, descricao }: Props) => {
+const Prato = ({ titulo, imagem, descricao, valor, id }: Props) => {
   function ativaModal() {
     setVisivel(!visivel)
   }
@@ -22,7 +24,15 @@ const Prato = ({ titulo, imagem, descricao }: Props) => {
         <Descricao>{descricao}</Descricao>
         <Button onClick={ativaModal}>Mais detalhes</Button>
       </Card>
-      <Modal visivel={visivel} fechar={ativaModal} />
+      <Modal
+        visivel={visivel}
+        fechar={ativaModal}
+        imagem={imagem}
+        titulo={titulo}
+        descricao={descricao}
+        valor={valor}
+        id={id}
+      />
     </>
   )
 }

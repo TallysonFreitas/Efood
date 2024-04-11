@@ -9,29 +9,56 @@ import {
   Close
 } from './style'
 import CloseImg from '../../assets/images/close.png'
+import { useDispatch } from 'react-redux'
+import { adicionaPrato } from '../../store/Reducers/PratosReducer'
 
-const Modal = ({ visivel, fechar }: { visivel: boolean; fechar: any }) => {
+type Props = {
+  visivel: boolean
+  fechar: any
+  imagem: string
+  titulo: string
+  descricao: string
+  valor: number
+  id: number
+}
+
+const Modal = ({
+  visivel,
+  fechar,
+  imagem,
+  titulo,
+  descricao,
+  valor,
+  id
+}: Props) => {
+  const dispatch = useDispatch()
+
   return (
     <Container visivel={visivel}>
-      <div className="container">
+      <div className="container-l">
         <Card>
-          <Imagem />
+          <Imagem imagem={imagem} />
           <Textos>
-            <Titulo>Pizza Marguerita</Titulo>
-            <Descricao>
-              A pizza Margherita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião.
-            </Descricao>
+            <Titulo>{titulo}</Titulo>
+            <Descricao>{descricao}</Descricao>
             <Descricao>Serve: de 2 a 3 pessoas</Descricao>
-            <Button>Adicionar ao carrinho - 69,90</Button>
+            <Button
+              onClick={() => {
+                dispatch(
+                  adicionaPrato({
+                    descricao: descricao,
+                    imagem: imagem,
+                    valor: valor,
+                    titulo: titulo,
+                    id: id
+                  }),
+                  fechar()
+                )
+              }}
+            >
+              Adicionar ao carrinho -{' '}
+              {valor.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+            </Button>
           </Textos>
           <Close onClick={fechar}>
             <img src={CloseImg} alt="fechar" />

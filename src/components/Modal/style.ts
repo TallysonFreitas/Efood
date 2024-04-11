@@ -7,7 +7,7 @@ type Props = {
 
 export const Container = styled.div<Props>`
   position: fixed;
-  display: ${(props) => (props.visivel === true ? '' : 'none')};
+  display: ${(props) => (props.visivel === true ? 'block' : 'none')};
   top: 0;
   left: 0;
   width: 100%;
@@ -15,11 +15,14 @@ export const Container = styled.div<Props>`
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 
-  .container {
+  .container-l {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
   }
 `
 
@@ -34,10 +37,17 @@ export const Card = styled.div`
   color: ${cores.marromClaro};
 `
 
-export const Imagem = styled.div`
+type ImagemType = {
+  imagem: string
+}
+
+export const Imagem = styled.div<ImagemType>`
   width: 280px;
   height: 280px;
-  background-image: url(https://placehold.co/280x280);
+  background-image: url(${(props) => props.imagem});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `
 
 export const Textos = styled.div``
