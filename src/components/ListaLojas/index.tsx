@@ -1,9 +1,9 @@
-import { Container } from './style'
+import * as S from './style'
 import { Loja } from '../../models/Loja'
 import LojaItem from '../Loja'
 
 const ListaLoja = ({ lojas }: { lojas: Loja[] }) => (
-  <Container>
+  <S.Container>
     <div className="container">
       {lojas.map((each) => (
         <LojaItem
@@ -17,7 +17,7 @@ const ListaLoja = ({ lojas }: { lojas: Loja[] }) => (
         />
       ))}
     </div>
-  </Container>
+  </S.Container>
 )
 
 export default ListaLoja

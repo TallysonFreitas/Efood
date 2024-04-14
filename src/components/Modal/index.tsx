@@ -1,13 +1,4 @@
-import {
-  Card,
-  Container,
-  Descricao,
-  Imagem,
-  Textos,
-  Titulo,
-  Button,
-  Close
-} from './style'
+import * as S from './style'
 import CloseImg from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
 import { adicionaPrato } from '../../store/Reducers/PratosReducer'
@@ -34,15 +25,15 @@ const Modal = ({
   const dispatch = useDispatch()
 
   return (
-    <Container visivel={visivel}>
+    <S.Container visivel={visivel}>
       <div className="container-l">
-        <Card>
-          <Imagem imagem={imagem} />
-          <Textos>
-            <Titulo>{titulo}</Titulo>
-            <Descricao>{descricao}</Descricao>
-            <Descricao>Serve: de 2 a 3 pessoas</Descricao>
-            <Button
+        <S.Card>
+          <S.Imagem imagem={imagem} />
+          <S.Textos>
+            <S.Titulo>{titulo}</S.Titulo>
+            <S.Descricao>{descricao}</S.Descricao>
+            <S.Descricao>Serve: de 2 a 3 pessoas</S.Descricao>
+            <S.Button
               onClick={() => {
                 dispatch(
                   adicionaPrato({
@@ -58,14 +49,14 @@ const Modal = ({
             >
               Adicionar ao carrinho -{' '}
               {valor.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
-            </Button>
-          </Textos>
-          <Close onClick={fechar}>
+            </S.Button>
+          </S.Textos>
+          <S.Close onClick={fechar}>
             <img src={CloseImg} alt="fechar" />
-          </Close>
-        </Card>
+          </S.Close>
+        </S.Card>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

@@ -1,15 +1,5 @@
 import { useSelector } from 'react-redux'
-import {
-  Button,
-  Card,
-  Close,
-  Container,
-  Entrega,
-  Info,
-  Texto,
-  Titulo,
-  TotalPedidos
-} from './style'
+import * as S from './style'
 import { RootReducer } from '../../store'
 import CarrinhoItem from '../CarrinhoItem'
 import CloseImg from '../../assets/images/close.png'
@@ -51,11 +41,11 @@ const Carrinho = ({
   }
 
   return (
-    <Container visivel={visivel}>
-      <Card>
-        <Close onClick={fechar}>
+    <S.Container visivel={visivel}>
+      <S.Card>
+        <S.Close onClick={fechar}>
           <img src={CloseImg} alt="close" />
-        </Close>
+        </S.Close>
         {/* Carrinho */}
         {etapa === 'carrinho' && (
           <>
@@ -71,22 +61,22 @@ const Carrinho = ({
                 />
               )
             })}
-            <TotalPedidos>
-              <Texto>Valor Total</Texto>
-              <Texto>
+            <S.TotalPedidos>
+              <S.Texto>Valor Total</S.Texto>
+              <S.Texto>
                 {ValorTotal.toLocaleString('pt-br', {
                   style: 'currency',
                   currency: 'BRL'
                 })}
-              </Texto>
-            </TotalPedidos>
-            <Entrega
+              </S.Texto>
+            </S.TotalPedidos>
+            <S.Entrega
               onClick={() => {
                 setEtapa('entrega')
               }}
             >
               Continuar com a entrega
-            </Entrega>
+            </S.Entrega>
           </>
         )}
         {/* Entrega */}
@@ -104,35 +94,35 @@ const Carrinho = ({
         {/* Fim */}
         {etapa === 'fim' && (
           <>
-            <Titulo>Pedido realizado - ORDER_ID</Titulo>
-            <Info>
+            <S.Titulo>Pedido realizado - ORDER_ID</S.Titulo>
+            <S.Info>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
-            </Info>
-            <Info>
+            </S.Info>
+            <S.Info>
               Gostaríamos de ressaltar que nossos entregadores não estão
               autorizados a realizar cobranças extras.
-            </Info>
-            <Info>
+            </S.Info>
+            <S.Info>
               Lembre-se da importância de higienizar as mãos após o recebimento
               do pedido, garantindo assim sua segurança e bem-estar durante a
               refeição.
-            </Info>
-            <Info>
+            </S.Info>
+            <S.Info>
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
-            </Info>
-            <Button
+            </S.Info>
+            <S.Button
               onClick={() => {
                 fechar()
               }}
             >
               Concluir
-            </Button>
+            </S.Button>
           </>
         )}
-      </Card>
-    </Container>
+      </S.Card>
+    </S.Container>
   )
 }
 

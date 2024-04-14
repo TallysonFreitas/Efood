@@ -1,12 +1,12 @@
 import { PratoType } from '../../models/Prato'
 import Prato from '../Prato'
-import { Container } from './style'
+import * as S from './style'
 
 type Props = {
   pratos: PratoType[]
 }
 const ListaPratos = ({ pratos }: Props) => (
-  <Container>
+  <S.Container>
     <div className="container">
       {pratos.map((each) => (
         <Prato
@@ -19,7 +19,7 @@ const ListaPratos = ({ pratos }: Props) => (
         />
       ))}
     </div>
-  </Container>
+  </S.Container>
 )
 
 export default ListaPratos

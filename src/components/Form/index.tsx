@@ -1,12 +1,4 @@
-import {
-  Button,
-  Container,
-  Input,
-  InputGroup,
-  InputGroup3,
-  Label,
-  Titulo
-} from './style'
+import * as S from './style'
 
 const Entrega = ({
   voltar,
@@ -18,85 +10,85 @@ const Entrega = ({
   type: 'entrega' | 'pagamento'
 }) => {
   return (
-    <Container>
+    <S.Container>
       {type === 'entrega' ? (
         <>
-          <Titulo>Entrega</Titulo>
-          <Label htmlFor="recebedor">Quem irá receber</Label>
-          <Input required name="recebedor" />
-          <Label htmlFor="endereco">Endereço</Label>
-          <Input required name="endereco" />
-          <Label htmlFor="cidade">Cidade</Label>
-          <Input required name="cidade" />
-          <InputGroup>
-            <Container>
-              <Label htmlFor="cep">CEP</Label>
-              <Input required name="cep" />
-            </Container>
-            <Container>
-              <Label htmlFor="numero">Número</Label>
-              <Input required name="numero" />
-            </Container>
-          </InputGroup>
-          <Label htmlFor="complemento">Complemento (opcional)</Label>
-          <Input name="complemento" />
-          <Button
+          <S.Titulo>Entrega</S.Titulo>
+          <S.Label htmlFor="recebedor">Quem irá receber</S.Label>
+          <S.Input required name="recebedor" />
+          <S.Label htmlFor="endereco">Endereço</S.Label>
+          <S.Input required name="endereco" />
+          <S.Label htmlFor="cidade">Cidade</S.Label>
+          <S.Input required name="cidade" />
+          <S.InputGroup>
+            <S.Container>
+              <S.Label htmlFor="cep">CEP</S.Label>
+              <S.Input required name="cep" />
+            </S.Container>
+            <S.Container>
+              <S.Label htmlFor="numero">Número</S.Label>
+              <S.Input required name="numero" />
+            </S.Container>
+          </S.InputGroup>
+          <S.Label htmlFor="complemento">Complemento (opcional)</S.Label>
+          <S.Input name="complemento" />
+          <S.Button
             onClick={() => {
               continuar()
             }}
           >
             Continuar Pagamento
-          </Button>
-          <Button
+          </S.Button>
+          <S.Button
             onClick={() => {
               voltar()
             }}
           >
             Voltar para o carrinho
-          </Button>
+          </S.Button>
         </>
       ) : (
         <>
-          <Titulo>Pagamento - Valor a pagar</Titulo>
-          <Label>Nome no cartão</Label>
-          <Input required />
-          <InputGroup3>
+          <S.Titulo>Pagamento - Valor a pagar</S.Titulo>
+          <S.Label>Nome no cartão</S.Label>
+          <S.Input required />
+          <S.InputGroup3>
             <div>
-              <Label>Numero do cartão</Label>
-              <Input required />
+              <S.Label>Numero do cartão</S.Label>
+              <S.Input required />
             </div>
             <div>
-              <Label>CVV</Label>
-              <Input required />
+              <S.Label>CVV</S.Label>
+              <S.Input required />
             </div>
-          </InputGroup3>
-          <InputGroup>
+          </S.InputGroup3>
+          <S.InputGroup>
             <div>
-              <Label>Mês de vencimento</Label>
-              <Input required />
+              <S.Label>Mês de vencimento</S.Label>
+              <S.Input required />
             </div>
             <div>
-              <Label>Ano de vencimento</Label>
-              <Input required />
+              <S.Label>Ano de vencimento</S.Label>
+              <S.Input required />
             </div>
-          </InputGroup>
-          <Button
+          </S.InputGroup>
+          <S.Button
             onClick={() => {
               continuar()
             }}
           >
             Finalizar pagamento
-          </Button>
-          <Button
+          </S.Button>
+          <S.Button
             onClick={() => {
               voltar()
             }}
           >
             Voltar para a edição de endereço
-          </Button>
+          </S.Button>
         </>
       )}
-    </Container>
+    </S.Container>
   )
 }
 

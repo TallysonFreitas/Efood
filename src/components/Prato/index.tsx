@@ -1,6 +1,6 @@
 import { useState } from 'react'
+import * as S from './style'
 import Modal from '../Modal'
-import { Button, Card, Descricao, Imagem, Titulo } from './style'
 
 type Props = {
   titulo: string
@@ -18,12 +18,12 @@ const Prato = ({ titulo, imagem, descricao, valor, id }: Props) => {
   const [visivel, setVisivel] = useState(false)
   return (
     <>
-      <Card>
-        <Imagem src={imagem} />
-        <Titulo>{titulo}</Titulo>
-        <Descricao>{descricao}</Descricao>
-        <Button onClick={ativaModal}>Mais detalhes</Button>
-      </Card>
+      <S.Card>
+        <S.Imagem src={imagem} />
+        <S.Titulo>{titulo}</S.Titulo>
+        <S.Descricao>{descricao}</S.Descricao>
+        <S.Button onClick={ativaModal}>Mais detalhes</S.Button>
+      </S.Card>
       <Modal
         visivel={visivel}
         fechar={ativaModal}

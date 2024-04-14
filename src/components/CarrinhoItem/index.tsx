@@ -1,4 +1,4 @@
-import { Delete, Imagem, ItemCarrinho, Preco, Titulo } from './style'
+import * as S from './style'
 import DeleteImg from '../../assets/images/delete.png'
 import { useDispatch } from 'react-redux'
 import { removePrato } from '../../store/Reducers/PratosReducer'
@@ -15,25 +15,25 @@ const CarrinhoItem = ({ imagem, titulo, preco, descricao, id }: Props) => {
   const dispatch = useDispatch()
 
   return (
-    <ItemCarrinho>
-      <Imagem imagem={imagem} title={descricao} />
+    <S.ItemCarrinho>
+      <S.Imagem imagem={imagem} title={descricao} />
       <div>
-        <Titulo>{titulo}</Titulo>
-        <Preco>
+        <S.Titulo>{titulo}</S.Titulo>
+        <S.Preco>
           {preco.toLocaleString('pt-br', {
             style: 'currency',
             currency: 'BRL'
           })}
-        </Preco>
+        </S.Preco>
       </div>
-      <Delete
+      <S.Delete
         onClick={() => {
           dispatch(removePrato(id))
         }}
       >
         <img src={DeleteImg} alt="delete" />
-      </Delete>
-    </ItemCarrinho>
+      </S.Delete>
+    </S.ItemCarrinho>
   )
 }
 

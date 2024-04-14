@@ -1,4 +1,4 @@
-import { ContainerHeader, Texto, TextoLink, Titulo } from './style'
+import * as S from './style'
 import LogoImg from '../../assets/images/logo.png'
 import Background from '../../assets/images/background-header.png'
 import { Logo } from '../../styles'
@@ -17,24 +17,24 @@ const Header = ({ type, titulo, showCarrinho }: Props) => {
   })
 
   return (
-    <ContainerHeader image={Background} type={type}>
+    <S.ContainerHeader image={Background} type={type}>
       <div className="container">
         {type == 'nav' ? (
           <>
-            <TextoLink to={'/'}>Restaurantes</TextoLink>
+            <S.TextoLink to={'/'}>Restaurantes</S.TextoLink>
             <Logo src={LogoImg} alt="Efood" />
-            <Texto onClick={showCarrinho}>
+            <S.Texto onClick={showCarrinho}>
               {pedidos.length} produto(s) no carrinho
-            </Texto>
+            </S.Texto>
           </>
         ) : (
           <>
             <Logo src={LogoImg} alt="Efood" />
-            <Titulo>{titulo}</Titulo>
+            <S.Titulo>{titulo}</S.Titulo>
           </>
         )}
       </div>
-    </ContainerHeader>
+    </S.ContainerHeader>
   )
 }
 
