@@ -5,7 +5,7 @@ import { adicionaPrato } from '../../store/Reducers/PratosReducer'
 
 type Props = {
   visivel: boolean
-  fechar: any
+  fechar: () => void
   imagem: string
   titulo: string
   descricao: string
