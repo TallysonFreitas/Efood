@@ -21,7 +21,7 @@ export const Imagem = styled.div<Props>`
     z-index: 1;
     position: relative;
     height: 100%;
-    padding: 32px;
+    padding: 32px 0;
   }
 `
 
