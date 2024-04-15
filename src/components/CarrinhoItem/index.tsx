@@ -2,6 +2,7 @@ import * as S from './style'
 import DeleteImg from '../../assets/images/delete.png'
 import { useDispatch } from 'react-redux'
 import { removePrato } from '../../store/Reducers/PratosReducer'
+import { formataValorReal } from '../Modal'
 
 type Props = {
   imagem: string
@@ -19,12 +20,7 @@ const CarrinhoItem = ({ imagem, titulo, preco, descricao, id }: Props) => {
       <S.Imagem imagem={imagem} title={descricao} />
       <div>
         <S.Titulo>{titulo}</S.Titulo>
-        <S.Preco>
-          {preco.toLocaleString('pt-br', {
-            style: 'currency',
-            currency: 'BRL'
-          })}
-        </S.Preco>
+        <S.Preco>{formataValorReal(preco)}</S.Preco>
       </div>
       <S.Delete
         onClick={() => {
