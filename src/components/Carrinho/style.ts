@@ -11,9 +11,30 @@ export const Container = styled.div<Props>`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  min-height: 100%;
+  height: 100%;
   z-index: 2;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+  }
+`
+
+export const ContainCard = styled.div`
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 `
 
 export const Card = styled.div`
@@ -21,9 +42,10 @@ export const Card = styled.div`
   top: 0;
   right: 0;
   width: 360px;
-  height: 100%;
+  min-height: 100%;
   padding: 32px 8px;
   background-color: ${cores.laranja};
+  z-index: 3;
 `
 
 export const Close = styled.div`
