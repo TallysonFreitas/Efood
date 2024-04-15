@@ -4,11 +4,17 @@ import { cores } from '../../styles'
 export const Card = styled.div`
   padding: 8px;
   background-color: ${cores.laranja};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const Imagem = styled.img`
   width: 100%;
   margin-bottom: 8px;
+  height: 100%;
+  max-height: 166px;
+  object-fit: cover;
 `
 
 export const Titulo = styled.h3`
