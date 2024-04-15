@@ -12,8 +12,16 @@ export const Container = styled.div<Props>`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   .container-l {
     display: flex;
@@ -35,6 +43,7 @@ export const Card = styled.div`
   gap: 24px;
   grid-template-columns: 280px auto;
   color: ${cores.marromClaro};
+  z-index: 3;
 `
 
 type ImagemType = {

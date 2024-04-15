@@ -11,6 +11,14 @@ type Props = {
   descricao: string
   valor: number
   id: number
+  porcao: string
+}
+
+export const formataValorReal = (e = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(e)
 }
 
 const Modal = ({
@@ -20,6 +28,7 @@ const Modal = ({
   titulo,
   descricao,
   valor,
+  porcao,
   id
 }: Props) => {
   const dispatch = useDispatch()
@@ -32,7 +41,7 @@ const Modal = ({
           <S.Textos>
             <S.Titulo>{titulo}</S.Titulo>
             <S.Descricao>{descricao}</S.Descricao>
-            <S.Descricao>Serve: de 2 a 3 pessoas</S.Descricao>
+            <S.Descricao>Serve: de {porcao}</S.Descricao>
             <S.Button
               onClick={() => {
                 dispatch(
@@ -47,8 +56,7 @@ const Modal = ({
                 )
               }}
             >
-              Adicionar ao carrinho -{' '}
-              {valor.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+              Adicionar ao carrinho - {formataValorReal(valor)}
             </S.Button>
           </S.Textos>
           <S.Close onClick={fechar}>
@@ -56,6 +64,12 @@ const Modal = ({
           </S.Close>
         </S.Card>
       </div>
+      <div
+        className="overlay"
+        onClick={() => {
+          fechar()
+        }}
+      ></div>
     </S.Container>
   )
 }
