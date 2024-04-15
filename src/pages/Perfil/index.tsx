@@ -1,71 +1,27 @@
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
-import BannerImg from '../../assets/images/dolce.png'
 import ListaPratos from '../../components/ListaPratos'
-import { PratoType } from '../../models/Prato'
-import Margerita from '../../assets/images/pizza-marguerita.png'
 import Carrinho from '../../components/Carrinho'
-import { useState } from 'react'
-
-const Pratos: PratoType[] = [
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 1
-  },
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 2
-  },
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 3
-  },
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 4
-  },
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 5
-  },
-  {
-    descricao:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    titulo: 'Pizza Marguerita',
-    valor: 60.9,
-
-    imagem: Margerita,
-    id: 6
-  }
-]
+import { useEffect, useState } from 'react'
+import { RestauranteType } from '../Home'
+import { useParams } from 'react-router-dom'
 
 const Perfil = () => {
   const [carrinhoVisivel, setCarrinhoVisivel] = useState(false)
+  const { id } = useParams()
+  const [restaurante, setRestaurante] = useState<RestauranteType>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((response) => response.json())
+      .then((json) => {
+        setRestaurante(json)
+      })
+  }, [id])
+
+  if (!restaurante) {
+    return <h3>carregando...</h3>
+  }
 
   return (
     <>
@@ -76,11 +32,11 @@ const Perfil = () => {
         }}
       />
       <Banner
-        imagem={BannerImg}
-        tag="Italiana"
-        titulo="La Dolce Vita Trattoria"
+        imagem={restaurante.capa}
+        tag={restaurante.tipo}
+        titulo={restaurante.titulo}
       />
-      <ListaPratos pratos={Pratos} />
+      <ListaPratos pratos={restaurante?.cardapio} />
       <Carrinho
         visivel={carrinhoVisivel}
         fechar={() => {
