@@ -6,8 +6,12 @@ export const Card = styled.div`
   position: relative;
 `
 
-export const Imagem = styled.img`
+export const Imagem = styled.div`
+  background-size: cover;
+  display: block;
   width: 100%;
+  height: 218px;
+  background-position: center;
 `
 
 export const Textos = styled.div`
@@ -43,6 +47,7 @@ export type TagType = {
 
 export const Tag = styled.p<TagType>`
   font-family: Roboto;
+  text-transform: capitalize;
   font-size: ${(props) => (props.size === 'small' ? '12px' : '14px')};
   font-weight: 700;
   line-height: ${(props) => (props.size === 'small' ? '14px' : '16px')};

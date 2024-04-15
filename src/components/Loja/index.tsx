@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom'
 export type Props = {
   nome: string
   descricao: string
-  link: string
+  id: number
   tags: string[]
   nota: number
   imagem: string
 }
 
-const Loja = ({ nome, descricao, link, tags, imagem }: Props) => (
+const Loja = ({ nome, descricao, id, tags, imagem }: Props) => (
   <S.Card>
-    <S.Imagem src={imagem} alt="Sushi" />
+    <S.Imagem style={{ backgroundImage: `url(${imagem})` }} />
     <S.Textos>
       <S.Nome>{nome}</S.Nome>
       <S.Descricao>{descricao}</S.Descricao>
-      <Link to={link}>
+      <Link to={`perfil/${id}`}>
         <S.Tag size="large">Saiba mais</S.Tag>
       </Link>
       <S.Nota>
