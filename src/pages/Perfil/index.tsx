@@ -2,24 +2,16 @@ import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import ListaPratos from '../../components/ListaPratos'
 import Carrinho from '../../components/Carrinho'
-import { useEffect, useState } from 'react'
-import { RestauranteType } from '../Home'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useGetPratosQuery } from '../../services/api'
 
 const Perfil = () => {
   const [carrinhoVisivel, setCarrinhoVisivel] = useState(false)
   const { id } = useParams()
-  const [restaurante, setRestaurante] = useState<RestauranteType>()
+  const { data } = useGetPratosQuery(id!)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((response) => response.json())
-      .then((json) => {
-        setRestaurante(json)
-      })
-  }, [id])
-
-  if (!restaurante) {
+  if (!data) {
     return <h3>carregando...</h3>
   }
 
@@ -31,12 +23,8 @@ const Perfil = () => {
           setCarrinhoVisivel(!carrinhoVisivel)
         }}
       />
-      <Banner
-        imagem={restaurante.capa}
-        tag={restaurante.tipo}
-        titulo={restaurante.titulo}
-      />
-      <ListaPratos pratos={restaurante?.cardapio} />
+      <Banner imagem={data.capa} tag={data.tipo} titulo={data.titulo} />
+      <ListaPratos pratos={data?.cardapio} />
       <Carrinho
         visivel={carrinhoVisivel}
         fechar={() => {
