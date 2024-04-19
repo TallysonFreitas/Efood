@@ -51,78 +51,91 @@ const Carrinho = ({
       ></div>
       <S.ContainCard>
         <S.Card>
-          <S.Close onClick={fechar}>
-            <img src={CloseImg} alt="close" />
-          </S.Close>
-          {/* Carrinho */}
-          {etapa === 'carrinho' && (
+          {pedidos.length > 0 ? (
             <>
-              {pedidos.map((each) => {
-                return (
-                  <CarrinhoItem
-                    descricao={each.descricao}
-                    imagem={each.imagem}
-                    preco={each.valor}
-                    titulo={each.titulo}
-                    key={each.id}
-                    id={each.id}
+              <S.Close onClick={fechar}>
+                <img src={CloseImg} alt="close" />
+              </S.Close>
+              {/* Carrinho */}
+              {etapa === 'carrinho' && (
+                <>
+                  {pedidos.map((each) => {
+                    return (
+                      <CarrinhoItem
+                        descricao={each.descricao}
+                        imagem={each.imagem}
+                        preco={each.valor}
+                        titulo={each.titulo}
+                        key={each.id}
+                        id={each.id}
+                      />
+                    )
+                  })}
+                  <S.TotalPedidos>
+                    <S.Texto>Valor Total</S.Texto>
+                    <S.Texto>{formataValorReal(ValorTotal)}</S.Texto>
+                  </S.TotalPedidos>
+                  <S.Entrega
+                    onClick={() => {
+                      setEtapa('entrega')
+                    }}
+                  >
+                    Continuar com a entrega
+                  </S.Entrega>
+                </>
+              )}
+              {/* Entrega */}
+              {etapa === 'entrega' && (
+                <>
+                  <Form
+                    type="entrega"
+                    voltar={carrinho}
+                    continuar={pagamento}
                   />
-                )
-              })}
-              <S.TotalPedidos>
-                <S.Texto>Valor Total</S.Texto>
-                <S.Texto>{formataValorReal(ValorTotal)}</S.Texto>
-              </S.TotalPedidos>
-              <S.Entrega
-                onClick={() => {
-                  setEtapa('entrega')
-                }}
-              >
-                Continuar com a entrega
-              </S.Entrega>
+                </>
+              )}
+              {/* Pagamento */}
+              {etapa === 'pagamento' && (
+                <>
+                  <Form type="pagamento" voltar={entrega} continuar={fim} />
+                </>
+              )}
+              {/* Fim */}
+              {etapa === 'fim' && (
+                <>
+                  <S.Titulo>Pedido realizado - ORDER_ID</S.Titulo>
+                  <S.Info>
+                    Estamos felizes em informar que seu pedido já está em
+                    processo de preparação e, em breve, será entregue no
+                    endereço fornecido.
+                  </S.Info>
+                  <S.Info>
+                    Gostaríamos de ressaltar que nossos entregadores não estão
+                    autorizados a realizar cobranças extras.
+                  </S.Info>
+                  <S.Info>
+                    Lembre-se da importância de higienizar as mãos após o
+                    recebimento do pedido, garantindo assim sua segurança e
+                    bem-estar durante a refeição.
+                  </S.Info>
+                  <S.Info>
+                    Esperamos que desfrute de uma deliciosa e agradável
+                    experiência gastronômica. Bom apetite!
+                  </S.Info>
+                  <S.Button
+                    onClick={() => {
+                      fechar()
+                    }}
+                  >
+                    Concluir
+                  </S.Button>
+                </>
+              )}
             </>
-          )}
-          {/* Entrega */}
-          {etapa === 'entrega' && (
-            <>
-              <Form type="entrega" voltar={carrinho} continuar={pagamento} />
-            </>
-          )}
-          {/* Pagamento */}
-          {etapa === 'pagamento' && (
-            <>
-              <Form type="pagamento" voltar={entrega} continuar={fim} />
-            </>
-          )}
-          {/* Fim */}
-          {etapa === 'fim' && (
-            <>
-              <S.Titulo>Pedido realizado - ORDER_ID</S.Titulo>
-              <S.Info>
-                Estamos felizes em informar que seu pedido já está em processo
-                de preparação e, em breve, será entregue no endereço fornecido.
-              </S.Info>
-              <S.Info>
-                Gostaríamos de ressaltar que nossos entregadores não estão
-                autorizados a realizar cobranças extras.
-              </S.Info>
-              <S.Info>
-                Lembre-se da importância de higienizar as mãos após o
-                recebimento do pedido, garantindo assim sua segurança e
-                bem-estar durante a refeição.
-              </S.Info>
-              <S.Info>
-                Esperamos que desfrute de uma deliciosa e agradável experiência
-                gastronômica. Bom apetite!
-              </S.Info>
-              <S.Button
-                onClick={() => {
-                  fechar()
-                }}
-              >
-                Concluir
-              </S.Button>
-            </>
+          ) : (
+            <S.Texto className="text-center">
+              Adicione algum prato para prosseguir para o pagamento
+            </S.Texto>
           )}
         </S.Card>
       </S.ContainCard>
