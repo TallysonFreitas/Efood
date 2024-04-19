@@ -24,6 +24,10 @@ export const Container = styled.div<Props>`
     width: 100%;
     z-index: 3;
   }
+
+  .text-center {
+    text-align: center;
+  }
 `
 
 export const ContainCard = styled.div`
