@@ -4,6 +4,7 @@ import Background from '../../assets/images/background-header.png'
 import { Logo } from '../../styles'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import { Link } from 'react-router-dom'
 
 type Props = {
   type: 'home' | 'nav'
@@ -22,14 +23,22 @@ const Header = ({ type, titulo, showCarrinho }: Props) => {
         {type == 'nav' ? (
           <>
             <S.TextoLink to={'/'}>Restaurantes</S.TextoLink>
-            <Logo src={LogoImg} alt="Efood" />
+            <h1>
+              <Link to={'/'}>
+                <Logo src={LogoImg} alt="Efood" />
+              </Link>
+            </h1>
             <S.Texto onClick={showCarrinho}>
               {pedidos.length} produto(s) no carrinho
             </S.Texto>
           </>
         ) : (
           <>
-            <Logo src={LogoImg} alt="Efood" />
+            <h1>
+              <Link to={'/'}>
+                <Logo src={LogoImg} alt="Efood" />
+              </Link>
+            </h1>
             <S.Titulo>{titulo}</S.Titulo>
           </>
         )}

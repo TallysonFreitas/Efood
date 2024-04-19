@@ -20,6 +20,11 @@ export const ContainerHeader = styled.header<Props>`
       props.type == 'nav' ? 'space-between' : 'center'};
     align-items: center;
   }
+
+  h1,
+  a {
+    line-height: 100%;
+  }
 `
 
 export const Texto = styled.p`
