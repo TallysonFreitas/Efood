@@ -125,3 +125,43 @@ export const Button = styled.button`
   margin-top: 16px;
   cursor: pointer;
 `
+
+export const ContainerInput = styled.div`
+  width: 100%;
+`
+
+export const Label = styled.label`
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+  color: ${cores.marromClaro};
+`
+
+export const Input = styled.input`
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+  color: ${cores.cinza};
+  margin: 8px 0px;
+  border: none;
+  padding: 4px;
+  background-color: ${cores.marromClaro};
+  outline: none;
+`
+
+export const InputGroup = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+`
+
+export const InputGroup3 = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 32px;
+`

@@ -21,6 +21,7 @@ export const Textos = styled.div`
   border: 1px solid ${cores.laranja};
   border-top: 0px;
   background-color: ${cores.branco};
+  height: calc(100% - 214px);
 `
 
 export const Nome = styled.h4`
