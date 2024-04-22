@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 type Props = {
-  imagem: string
+  image: string
 }
 
-export const Imagem = styled.div<Props>`
+export const Image = styled.div<Props>`
   width: 100%;
   height: 280px;
-  background-image: url(${(props) => props.imagem});
+  background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -34,7 +34,7 @@ export const Filtro = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `
 
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-size: 32px;
   font-weight: 900;
   line-height: 38px;

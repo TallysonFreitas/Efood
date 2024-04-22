@@ -1,19 +1,19 @@
 import * as S from './style'
 
 type BannerType = {
-  imagem: string
-  titulo: string
+  image: string
+  title: string
   tag: string
 }
 
-const Banner = ({ imagem, titulo, tag }: BannerType) => (
-  <S.Imagem imagem={imagem}>
+const Banner = ({ image, title, tag }: BannerType) => (
+  <S.Image image={image}>
     <div className="container">
       <S.Tag>{tag}</S.Tag>
-      <S.Titulo>{titulo}</S.Titulo>
+      <S.Title>{title}</S.Title>
     </div>
     <S.Filtro />
-  </S.Imagem>
+  </S.Image>
 )
 
 export default Banner
