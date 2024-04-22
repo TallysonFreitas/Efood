@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as S from './style'
 import { RootReducer } from '../../store'
 import CarrinhoItem from '../CarrinhoItem'
@@ -8,6 +8,7 @@ import { formataValorReal } from '../Modal'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
+import { limpaCart } from '../../store/Reducers/PratosReducer'
 
 const Carrinho = ({
   visivel,
@@ -20,34 +21,39 @@ const Carrinho = ({
   const { pedidos } = useSelector((state: RootReducer) => {
     return state.pedidos
   })
+  const dispatch = useDispatch()
 
   const ValorTotal = pedidos.reduce(
     (acumulador, each) => acumulador + each.valor,
     0
   )
 
-  function carrinho() {
-    setEtapa('carrinho')
-  }
-
-  function pagamento() {
-    setEtapa('pagamento')
-  }
-
-  function entrega() {
-    setEtapa('entrega')
-  }
-
-  function fim() {
-    setEtapa('fim')
-  }
-
-  const [purchase, { data, isLoading }] = usePurchaseMutation()
+  const [purchase, { data }] = usePurchaseMutation()
 
   const checkInputHasError = (fieldName: string) => {
     const isInvalid = fieldName in form.errors
 
+    if (
+      form.values.receiver === '' ||
+      form.values.city === '' ||
+      form.values.zipCode === '' ||
+      form.values.number === '' ||
+      form.values.description === ''
+    ) {
+      return true
+    }
     return isInvalid
+  }
+
+  const checkInputIsInvalid = (fieldName: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+
+    if (isTouched && isInvalid) {
+      return true
+    } else {
+      return false
+    }
   }
 
   const initialValuesFormik = {
@@ -109,6 +115,39 @@ const Carrinho = ({
     }
   })
 
+  const validaEndereco = () => {
+    if (
+      checkInputHasError('receiver') ||
+      checkInputHasError('city') ||
+      checkInputHasError('zipCode') ||
+      checkInputHasError('number') ||
+      checkInputHasError('description')
+    ) {
+      console.log(form.errors)
+    } else {
+      setEtapa('pagamento')
+    }
+  }
+
+  const validaCartao = () => {
+    if (
+      checkInputHasError('cardName') &&
+      checkInputHasError('cardCode') &&
+      checkInputHasError('cardNumber') &&
+      checkInputHasError('expiresMonth') &&
+      checkInputHasError('expiresYear')
+    ) {
+      console.log(form.errors)
+    } else {
+      form.handleSubmit()
+      setEtapa('fim')
+    }
+  }
+
+  const finalizaPedido = () => {
+    fechar(), dispatch(limpaCart()), setEtapa('carrinho')
+  }
+
   return (
     <S.Container visivel={visivel}>
       <div
@@ -163,6 +202,7 @@ const Carrinho = ({
                     onBlur={form.handleBlur}
                     id="receiver"
                     value={form.values.receiver}
+                    className={checkInputIsInvalid('receiver') ? 'error' : ''}
                   />
                   <S.Label htmlFor="description">Endereço</S.Label>
                   <S.Input
@@ -171,6 +211,9 @@ const Carrinho = ({
                     onBlur={form.handleBlur}
                     id="number"
                     value={form.values.description}
+                    className={
+                      checkInputIsInvalid('description') ? 'error' : ''
+                    }
                   />
                   <S.Label htmlFor="city">Cidade</S.Label>
                   <S.Input
@@ -179,6 +222,7 @@ const Carrinho = ({
                     onBlur={form.handleBlur}
                     id="city"
                     value={form.values.city}
+                    className={checkInputIsInvalid('city') ? 'error' : ''}
                   />
                   <S.InputGroup>
                     <S.ContainerInput>
@@ -190,6 +234,9 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="zipCode"
                         value={form.values.zipCode}
+                        className={
+                          checkInputIsInvalid('zipCode') ? 'error' : ''
+                        }
                       />
                     </S.ContainerInput>
                     <S.ContainerInput>
@@ -200,6 +247,7 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="number"
                         value={form.values.number}
+                        className={checkInputIsInvalid('number') ? 'error' : ''}
                       />
                     </S.ContainerInput>
                   </S.InputGroup>
@@ -211,25 +259,12 @@ const Carrinho = ({
                     id="complement"
                     value={form.values.complement}
                   />
-                  <S.Button
-                    onClick={() => {
-                      if (
-                        checkInputHasError('receiver') &&
-                        checkInputHasError('city') &&
-                        checkInputHasError('zipCode') &&
-                        checkInputHasError('number')
-                      ) {
-                        console.log(form.errors)
-                      } else {
-                        pagamento()
-                      }
-                    }}
-                  >
+                  <S.Button onClick={validaEndereco}>
                     Continuar Pagamento
                   </S.Button>
                   <S.Button
                     onClick={() => {
-                      carrinho()
+                      setEtapa('carrinho')
                     }}
                   >
                     Voltar para o carrinho
@@ -246,6 +281,7 @@ const Carrinho = ({
                     onBlur={form.handleBlur}
                     id="cardName"
                     value={form.values.cardName}
+                    className={checkInputIsInvalid('cardName') ? 'error' : ''}
                   />
                   <S.InputGroup3>
                     <div>
@@ -255,6 +291,9 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="cardNumber"
                         value={form.values.cardNumber}
+                        className={
+                          checkInputIsInvalid('cardNumber') ? 'error' : ''
+                        }
                       />
                     </div>
                     <div>
@@ -264,6 +303,9 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="cardCode"
                         value={form.values.cardCode}
+                        className={
+                          checkInputIsInvalid('cardCode') ? 'error' : ''
+                        }
                       />
                     </div>
                   </S.InputGroup3>
@@ -277,6 +319,9 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="expiresMonth"
                         value={form.values.expiresMonth}
+                        className={
+                          checkInputIsInvalid('expiresMonth') ? 'error' : ''
+                        }
                       />
                     </div>
                     <div>
@@ -286,30 +331,18 @@ const Carrinho = ({
                         onBlur={form.handleBlur}
                         id="expiresYear"
                         value={form.values.expiresYear}
+                        className={
+                          checkInputIsInvalid('expiresYear') ? 'error' : ''
+                        }
                       />
                     </div>
                   </S.InputGroup>
-                  <S.Button
-                    onClick={() => {
-                      if (
-                        checkInputHasError('cardName') &&
-                        checkInputHasError('cardCode') &&
-                        checkInputHasError('cardNumber') &&
-                        checkInputHasError('expiresMonth') &&
-                        checkInputHasError('expiresYear')
-                      ) {
-                        console.log(form.errors)
-                      } else {
-                        form.handleSubmit()
-                        fim()
-                      }
-                    }}
-                  >
+                  <S.Button onClick={validaCartao}>
                     Finalizar pagamento
                   </S.Button>
                   <S.Button
                     onClick={() => {
-                      entrega()
+                      setEtapa('entrega')
                     }}
                   >
                     Voltar para a edição de endereço
@@ -317,7 +350,7 @@ const Carrinho = ({
                 </>
               )}
               {/* Fim */}
-              {etapa === 'fim' && (
+              {etapa === 'fim' && data?.orderId && (
                 <>
                   <S.Titulo>Pedido realizado - {data?.orderId}</S.Titulo>
                   <S.Info>
@@ -338,13 +371,7 @@ const Carrinho = ({
                     Esperamos que desfrute de uma deliciosa e agradável
                     experiência gastronômica. Bom apetite!
                   </S.Info>
-                  <S.Button
-                    onClick={() => {
-                      fechar()
-                    }}
-                  >
-                    Concluir
-                  </S.Button>
+                  <S.Button onClick={finalizaPedido}>Concluir</S.Button>
                 </>
               )}
             </>

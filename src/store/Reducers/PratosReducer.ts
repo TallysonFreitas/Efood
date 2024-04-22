@@ -18,9 +18,12 @@ const pratosSlice = createSlice({
     },
     removePrato: (state, action: PayloadAction<number>) => {
       state.pedidos = state.pedidos.filter((each) => each.id !== action.payload)
+    },
+    limpaCart: (state) => {
+      state.pedidos = []
     }
   }
 })
 
-export const { adicionaPrato, removePrato } = pratosSlice.actions
+export const { adicionaPrato, removePrato, limpaCart } = pratosSlice.actions
 export default pratosSlice.reducer

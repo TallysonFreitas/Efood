@@ -50,6 +50,10 @@ export const Card = styled.div`
   padding: 32px 8px;
   background-color: ${cores.laranja};
   z-index: 3;
+
+  .error {
+    border: 2px solid #f00;
+  }
 `
 
 export const Close = styled.div`
