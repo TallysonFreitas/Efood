@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
-export const ItemCarrinho = styled.div`
+export const CartItem = styled.div`
   width: 100%;
   padding: 8px;
   background-color: ${cores.marromClaro};
@@ -13,19 +13,19 @@ export const ItemCarrinho = styled.div`
 `
 
 type Props = {
-  imagem: string
+  image: string
 }
 
-export const Imagem = styled.div<Props>`
+export const Image = styled.div<Props>`
   width: 80px;
   height: 80px;
-  background-image: url(${(props) => props.imagem});
+  background-image: url(${(props) => props.image});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 18px;
   font-weight: 900;
   line-height: 21px;
@@ -33,7 +33,7 @@ export const Titulo = styled.h3`
   margin-bottom: 16px;
 `
 
-export const Preco = styled.p`
+export const Price = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;

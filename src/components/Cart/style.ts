@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 type Props = {
-  visivel: boolean
+  visible: boolean
 }
 
 export const Container = styled.div<Props>`
   position: fixed;
-  display: ${(props) => (props.visivel === true ? 'block' : 'none')};
+  display: ${(props) => (props.visible === true ? 'block' : 'none')};
   top: 0;
   left: 0;
   width: 100%;

@@ -1,7 +1,7 @@
 import * as S from './style'
 import CloseImg from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
-import { adicionaPrato } from '../../store/Reducers/PratosReducer'
+import { addPlate } from '../../store/Reducers/PratosReducer'
 
 type Props = {
   visivel: boolean
@@ -45,7 +45,7 @@ const Modal = ({
             <S.Button
               onClick={() => {
                 dispatch(
-                  adicionaPrato({
+                  addPlate({
                     descricao: descricao,
                     imagem: imagem,
                     valor: valor,

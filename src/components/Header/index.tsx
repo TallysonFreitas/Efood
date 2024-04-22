@@ -1,20 +1,22 @@
-import * as S from './style'
-import LogoImg from '../../assets/images/logo.png'
-import Background from '../../assets/images/background-header.png'
 import { Logo } from '../../styles'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { Link } from 'react-router-dom'
 
+import * as S from './style'
+
+import LogoImg from '../../assets/images/logo.png'
+import Background from '../../assets/images/background-header.png'
+
 type Props = {
   type: 'home' | 'nav'
-  titulo?: string
+  title?: string
   showCarrinho?: () => void
 }
 
-const Header = ({ type, titulo, showCarrinho }: Props) => {
-  const { pedidos } = useSelector((state: RootReducer) => {
-    return state.pedidos
+const Header = ({ type, title, showCarrinho }: Props) => {
+  const { orders } = useSelector((state: RootReducer) => {
+    return state.orders
   })
 
   return (
@@ -22,15 +24,15 @@ const Header = ({ type, titulo, showCarrinho }: Props) => {
       <div className="container">
         {type == 'nav' ? (
           <>
-            <S.TextoLink to={'/'}>Restaurantes</S.TextoLink>
+            <S.TextLink to={'/'}>Restaurantes</S.TextLink>
             <h1>
               <Link to={'/'}>
                 <Logo src={LogoImg} alt="Efood" />
               </Link>
             </h1>
-            <S.Texto onClick={showCarrinho}>
-              {pedidos.length} produto(s) no carrinho
-            </S.Texto>
+            <S.Text onClick={showCarrinho}>
+              {orders.length} produto(s) no carrinho
+            </S.Text>
           </>
         ) : (
           <>
@@ -39,7 +41,7 @@ const Header = ({ type, titulo, showCarrinho }: Props) => {
                 <Logo src={LogoImg} alt="Efood" />
               </Link>
             </h1>
-            <S.Titulo>{titulo}</S.Titulo>
+            <S.Title>{title}</S.Title>
           </>
         )}
       </div>

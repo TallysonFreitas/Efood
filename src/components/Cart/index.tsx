@@ -1,29 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux'
-import * as S from './style'
-import { RootReducer } from '../../store'
-import CarrinhoItem from '../CarrinhoItem'
-import CloseImg from '../../assets/images/close.png'
 import { useState } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 import { formataValorReal } from '../Modal'
 import { useFormik } from 'formik'
-import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
-import { limpaCart } from '../../store/Reducers/PratosReducer'
+import { clearCart } from '../../store/Reducers/PratosReducer'
+import * as Yup from 'yup'
 
-const Carrinho = ({
-  visivel,
-  fechar
-}: {
-  visivel: boolean
-  fechar: () => void
-}) => {
+import * as S from './style'
+
+import CartItem from '../CartItem'
+import CloseImg from '../../assets/images/close.png'
+
+const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
   const [etapa, setEtapa] = useState('carrinho')
-  const { pedidos } = useSelector((state: RootReducer) => {
-    return state.pedidos
+  const { orders } = useSelector((state: RootReducer) => {
+    return state.orders
   })
   const dispatch = useDispatch()
 
-  const ValorTotal = pedidos.reduce(
+  const ValorTotal = orders.reduce(
     (acumulador, each) => acumulador + each.valor,
     0
   )
@@ -89,7 +86,7 @@ const Carrinho = ({
     }),
     onSubmit: (values) => {
       purchase({
-        products: pedidos.map((each) => ({ id: each.id, price: each.valor })),
+        products: orders.map((each) => ({ id: each.id, price: each.valor })),
         delivery: {
           receiver: values.receiver,
           address: {
@@ -145,34 +142,34 @@ const Carrinho = ({
   }
 
   const finalizaPedido = () => {
-    fechar(), dispatch(limpaCart()), setEtapa('carrinho')
+    close(), dispatch(clearCart()), setEtapa('carrinho')
   }
 
   return (
-    <S.Container visivel={visivel}>
+    <S.Container visible={visible}>
       <div
         className="overlay"
         onClick={() => {
-          fechar()
+          close()
         }}
       ></div>
       <S.ContainCard>
         <S.Card>
-          {pedidos.length > 0 ? (
+          {orders.length > 0 ? (
             <>
-              <S.Close onClick={fechar}>
+              <S.Close onClick={close}>
                 <img src={CloseImg} alt="close" />
               </S.Close>
               {/* Carrinho */}
               {etapa === 'carrinho' && (
                 <>
-                  {pedidos.map((each) => {
+                  {orders.map((each) => {
                     return (
-                      <CarrinhoItem
-                        descricao={each.descricao}
-                        imagem={each.imagem}
-                        preco={each.valor}
-                        titulo={each.titulo}
+                      <CartItem
+                        description={each.descricao}
+                        image={each.imagem}
+                        price={each.valor}
+                        title={each.titulo}
                         key={each.id}
                         id={each.id}
                       />
@@ -386,4 +383,4 @@ const Carrinho = ({
   )
 }
 
-export default Carrinho
+export default Cart

@@ -27,7 +27,7 @@ export const ContainerHeader = styled.header<Props>`
   }
 `
 
-export const Texto = styled.p`
+export const Text = styled.p`
   font-size: 18px;
   font-weight: 900;
   line-height: 20px;
@@ -35,7 +35,7 @@ export const Texto = styled.p`
   cursor: pointer;
 `
 
-export const TextoLink = styled(Link)`
+export const TextLink = styled(Link)`
   font-size: 18px;
   font-weight: 900;
   line-height: 20px;
@@ -43,7 +43,7 @@ export const TextoLink = styled(Link)`
   text-decoration: none;
 `
 
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-size: 36px;
   font-weight: 900;
   line-height: 42px;

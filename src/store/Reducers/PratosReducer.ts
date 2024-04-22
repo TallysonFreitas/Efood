@@ -2,28 +2,28 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { PratoType } from '../../models/Prato'
 
 type Props = {
-  pedidos: PratoType[]
+  orders: PratoType[]
 }
 
 const initialState: Props = {
-  pedidos: []
+  orders: []
 }
 
-const pratosSlice = createSlice({
-  name: 'pratos',
+const platesSlice = createSlice({
+  name: 'plates',
   initialState,
   reducers: {
-    adicionaPrato: (state, action: PayloadAction<PratoType>) => {
-      state.pedidos = [...state.pedidos, action.payload]
+    addPlate: (state, action: PayloadAction<PratoType>) => {
+      state.orders = [...state.orders, action.payload]
     },
-    removePrato: (state, action: PayloadAction<number>) => {
-      state.pedidos = state.pedidos.filter((each) => each.id !== action.payload)
+    removePlate: (state, action: PayloadAction<number>) => {
+      state.orders = state.orders.filter((each) => each.id !== action.payload)
     },
-    limpaCart: (state) => {
-      state.pedidos = []
+    clearCart: (state) => {
+      state.orders = []
     }
   }
 })
 
-export const { adicionaPrato, removePrato, limpaCart } = pratosSlice.actions
-export default pratosSlice.reducer
+export const { addPlate, removePlate, clearCart } = platesSlice.actions
+export default platesSlice.reducer

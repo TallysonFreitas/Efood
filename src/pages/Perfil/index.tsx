@@ -1,13 +1,15 @@
+import { useState } from 'react'
+
 import Banner from '../../components/Banner'
 import Header from '../../components/Header'
-import ListaPratos from '../../components/ListaPratos'
-import Carrinho from '../../components/Carrinho'
-import { useState } from 'react'
+import PlatesList from '../../components/PlatesList'
+import Cart from '../../components/Cart'
+
 import { useParams } from 'react-router-dom'
 import { useGetPratosQuery } from '../../services/api'
 
 const Perfil = () => {
-  const [carrinhoVisivel, setCarrinhoVisivel] = useState(false)
+  const [cartVisible, setCartVisible] = useState(false)
   const { id } = useParams()
   const { data } = useGetPratosQuery(id!)
 
@@ -20,15 +22,15 @@ const Perfil = () => {
       <Header
         type="nav"
         showCarrinho={() => {
-          setCarrinhoVisivel(!carrinhoVisivel)
+          setCartVisible(!cartVisible)
         }}
       />
-      <Banner imagem={data.capa} tag={data.tipo} titulo={data.titulo} />
-      <ListaPratos pratos={data?.cardapio} />
-      <Carrinho
-        visivel={carrinhoVisivel}
-        fechar={() => {
-          setCarrinhoVisivel(!carrinhoVisivel)
+      <Banner image={data.capa} tag={data.tipo} title={data.titulo} />
+      <PlatesList plates={data?.cardapio} />
+      <Cart
+        visible={cartVisible}
+        close={() => {
+          setCartVisible(!cartVisible)
         }}
       />
     </>

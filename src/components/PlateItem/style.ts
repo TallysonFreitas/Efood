@@ -9,7 +9,7 @@ export const Card = styled.div`
   justify-content: space-between;
 `
 
-export const Imagem = styled.img`
+export const Image = styled.img`
   width: 100%;
   margin-bottom: 8px;
   height: 100%;
@@ -17,7 +17,7 @@ export const Imagem = styled.img`
   object-fit: cover;
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 16px;
   font-weight: 900;
   line-height: 18px;
@@ -26,7 +26,7 @@ export const Titulo = styled.h3`
   margin-bottom: 8px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;

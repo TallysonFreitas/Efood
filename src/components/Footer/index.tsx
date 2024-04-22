@@ -1,9 +1,11 @@
+import { Logo } from '../../styles'
+
 import * as S from './style'
+
 import instagram from '../../assets/images/instagram.png'
 import facebook from '../../assets/images/facebook.png'
 import twitter from '../../assets/images/twitter.png'
 import LogoImg from '../../assets/images/logo.png'
-import { Logo } from '../../styles'
 
 const Footer = () => (
   <S.Container>
@@ -26,11 +28,11 @@ const Footer = () => (
           </a>
         </S.SocialItem>
       </S.SocialLinks>
-      <S.Texto>
+      <S.Text>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
         estabelecimento contratado.
-      </S.Texto>
+      </S.Text>
     </div>
   </S.Container>
 )

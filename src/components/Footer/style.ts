@@ -29,7 +29,7 @@ export const SocialItem = styled.li`
   }
 `
 
-export const Texto = styled.p`
+export const Text = styled.p`
   font-size: 10px;
   font-weight: 400;
   line-height: 12px;

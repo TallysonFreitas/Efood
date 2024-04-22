@@ -6,7 +6,7 @@ export const Card = styled.div`
   position: relative;
 `
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   background-size: cover;
   display: block;
   width: 100%;
@@ -14,7 +14,7 @@ export const Imagem = styled.div`
   background-position: center;
 `
 
-export const Textos = styled.div`
+export const Texts = styled.div`
   position: relative;
   padding: 8px;
   margin-top: -4px;
@@ -24,7 +24,7 @@ export const Textos = styled.div`
   height: calc(100% - 214px);
 `
 
-export const Nome = styled.h4`
+export const Name = styled.h4`
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
@@ -33,7 +33,7 @@ export const Nome = styled.h4`
   margin-bottom: 16px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
@@ -60,7 +60,7 @@ export const Tag = styled.p<TagType>`
   color: ${cores.marromClaro};
 `
 
-export const Nota = styled.div`
+export const Rating = styled.div`
   position: absolute;
   top: 8px;
   right: 8px;
@@ -78,7 +78,7 @@ export const Nota = styled.div`
   }
 `
 
-export const Destaques = styled.div`
+export const Emphasis = styled.div`
   position: absolute;
   top: 16px;
   right: 20px;

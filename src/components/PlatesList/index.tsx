@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import { CardapioType } from '../../pages/Home'
-import Prato from '../Prato'
-import * as S from './style'
+
+import PlateItem from '../PlateItem'
 import Modal from '../Modal'
 
+import { CardapioType } from '../../pages/Home'
+
+import * as S from './style'
+
 type Props = {
-  pratos: CardapioType[]
+  plates: CardapioType[]
 }
 
-const ListaPratos = ({ pratos }: Props) => {
+const PlatesList = ({ plates }: Props) => {
   const modalInitialState = {
     foto: '',
     preco: 0,
@@ -24,13 +27,13 @@ const ListaPratos = ({ pratos }: Props) => {
   return (
     <S.Container>
       <div className="container">
-        {pratos.map((each) => (
-          <Prato
-            descricao={each.descricao}
-            imagem={each.foto}
-            titulo={each.nome}
+        {plates.map((each) => (
+          <PlateItem
+            description={each.descricao}
+            image={each.foto}
+            title={each.nome}
             key={each.id}
-            abrir={() => {
+            open={() => {
               setModalVisivel(true),
                 setModalProps({
                   foto: each.foto,
@@ -60,4 +63,4 @@ const ListaPratos = ({ pratos }: Props) => {
   )
 }
 
-export default ListaPratos
+export default PlatesList
