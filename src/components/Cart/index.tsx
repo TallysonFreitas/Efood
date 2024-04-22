@@ -12,6 +12,7 @@ import * as S from './style'
 
 import CartItem from '../CartItem'
 import CloseImg from '../../assets/images/close.png'
+import InputMask from 'react-input-mask'
 
 const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
   const [etapa, setEtapa] = useState('carrinho')
@@ -225,6 +226,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                     <S.ContainerInput>
                       <S.Label htmlFor="zipCode">CEP</S.Label>
                       <S.Input
+                        as={InputMask}
                         type="text"
                         name="zipCode"
                         onChange={form.handleChange}
@@ -234,6 +236,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         className={
                           checkInputIsInvalid('zipCode') ? 'error' : ''
                         }
+                        mask="99999-999"
                       />
                     </S.ContainerInput>
                     <S.ContainerInput>
@@ -284,6 +287,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                     <div>
                       <S.Label htmlFor="cardNumber">Numero do cartão</S.Label>
                       <S.Input
+                        as={InputMask}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                         id="cardNumber"
@@ -291,11 +295,13 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         className={
                           checkInputIsInvalid('cardNumber') ? 'error' : ''
                         }
+                        mask="9999 9999 9999 9999"
                       />
                     </div>
                     <div>
                       <S.Label htmlFor="cardCode">CVV</S.Label>
                       <S.Input
+                        as={InputMask}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                         id="cardCode"
@@ -303,6 +309,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         className={
                           checkInputIsInvalid('cardCode') ? 'error' : ''
                         }
+                        mask="999"
                       />
                     </div>
                   </S.InputGroup3>
@@ -312,6 +319,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         Mês de vencimento
                       </S.Label>
                       <S.Input
+                        as={InputMask}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                         id="expiresMonth"
@@ -319,11 +327,13 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         className={
                           checkInputIsInvalid('expiresMonth') ? 'error' : ''
                         }
+                        mask="99"
                       />
                     </div>
                     <div>
                       <S.Label htmlFor="expiresYear">Ano de vencimento</S.Label>
                       <S.Input
+                        as={InputMask}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                         id="expiresYear"
@@ -331,6 +341,7 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
                         className={
                           checkInputIsInvalid('expiresYear') ? 'error' : ''
                         }
+                        mask="9999"
                       />
                     </div>
                   </S.InputGroup>
