@@ -1,5 +1,5 @@
 import Header from '../../components/Header'
-import ListaLoja from '../../components/StoreList'
+import StoreList from '../../components/StoreList'
 import { useGetRestaurantesQuery } from '../../services/api'
 
 export type CardapioType = {
@@ -32,7 +32,7 @@ const Home = () => {
           type="home"
           title="Viva experiências gastronômicas no conforto da sua casa"
         />
-        <ListaLoja store={data} />
+        <StoreList store={data} />
       </>
     )
   }
