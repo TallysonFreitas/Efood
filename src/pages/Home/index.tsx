@@ -1,5 +1,7 @@
 import Header from '../../components/Header'
+import Loader from '../../components/Loader'
 import StoreList from '../../components/StoreList'
+
 import { useGetRestaurantesQuery } from '../../services/api'
 
 export type CardapioType = {
@@ -36,7 +38,7 @@ const Home = () => {
       </>
     )
   }
-  return <h3>carregando</h3>
+  return <Loader />
 }
 
 export default Home

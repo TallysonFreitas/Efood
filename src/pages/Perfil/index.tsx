@@ -4,6 +4,7 @@ import Banner from '../../components/Banner'
 import Header from '../../components/Header'
 import PlatesList from '../../components/PlatesList'
 import Cart from '../../components/Cart'
+import Loader from '../../components/Loader'
 
 import { useParams } from 'react-router-dom'
 import { useGetPratosQuery } from '../../services/api'
@@ -14,7 +15,7 @@ const Perfil = () => {
   const { data } = useGetPratosQuery(id!)
 
   if (!data) {
-    return <h3>carregando...</h3>
+    return <Loader />
   }
 
   return (
