@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 type Props = {
   image: string
@@ -22,6 +22,10 @@ export const Image = styled.div<Props>`
     position: relative;
     height: 100%;
     padding: 32px 0;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      padding: 32px 16px;
+    }
   }
 `
 

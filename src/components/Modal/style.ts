@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 type Props = {
   visivel: boolean
@@ -44,6 +44,10 @@ export const Card = styled.div`
   grid-template-columns: 280px auto;
   color: ${cores.marromClaro};
   z-index: 3;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `
 
 type ImagemType = {
@@ -57,6 +61,10 @@ export const Imagem = styled.div<ImagemType>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+  }
 `
 
 export const Textos = styled.div``
