@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 import * as S from './style'
 
-import LogoImg from '../../assets/images/logo.png'
-import Background from '../../assets/images/background-header.png'
+import logoImg from '../../assets/images/logo.png'
+import background from '../../assets/images/background-header.png'
 
 type Props = {
   type: 'home' | 'nav'
@@ -19,26 +19,31 @@ const Header = ({ type, title, showCarrinho }: Props) => {
     return state.orders
   })
 
+  const screenWidth = window.screen.width
+
   return (
-    <S.ContainerHeader image={Background} type={type}>
+    <S.ContainerHeader image={background} type={type}>
       <div className="container">
         {type == 'nav' ? (
           <>
-            <S.TextLink to={'/'}>Restaurantes</S.TextLink>
+            <S.TextLink to={'/'}>
+              {screenWidth >= 768 ? 'Restaurantes' : '<'}
+            </S.TextLink>
             <h1>
               <Link to={'/'}>
-                <Logo src={LogoImg} alt="Efood" />
+                <Logo src={logoImg} alt="Efood" />
               </Link>
             </h1>
             <S.Text onClick={showCarrinho}>
-              {orders.length} produto(s) no carrinho
+              {orders.length}{' '}
+              {screenWidth >= 768 ? 'produto(s) no carrinho' : 'produto(s)'}
             </S.Text>
           </>
         ) : (
           <>
             <h1>
               <Link to={'/'}>
-                <Logo src={LogoImg} alt="Efood" />
+                <Logo src={logoImg} alt="Efood" />
               </Link>
             </h1>
             <S.Title>{title}</S.Title>
