@@ -80,10 +80,18 @@ const Cart = ({ visible, close }: { visible: boolean; close: () => void }) => {
       number: Yup.string().required('O campo é obrigatorio'),
       complement: Yup.string(),
       cardName: Yup.string().required('O campo é obrigatorio'),
-      cardNumber: Yup.string().required('O campo é obrigatorio'),
-      cardCode: Yup.string().required('O campo é obrigatorio'),
-      expiresMonth: Yup.string().required('O campo é obrigatorio'),
-      expiresYear: Yup.string().required('O campo é obrigatorio')
+      cardNumber: Yup.string()
+        .min(16, 'o valor minimo é 16 digitos')
+        .required('O campo é obrigatorio'),
+      cardCode: Yup.string()
+        .min(3, 'o valor minimo é 3 digitos')
+        .required('O campo é obrigatorio'),
+      expiresMonth: Yup.string()
+        .min(2, 'o valor minimo é 2 digitos')
+        .required('O campo é obrigatorio'),
+      expiresYear: Yup.string()
+        .min(4, 'o valor minimo é 4 digitos')
+        .required('O campo é obrigatorio')
     }),
     onSubmit: (values) => {
       purchase({
